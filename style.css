@@ -1,1 +1,198 @@
+/* === Загальні стилі === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Контейнер */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    background: linear-gradient(90deg, #7B3FE4, #00FFD1);
+    padding: 12px 24px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #7B3FE4, 0 0 30px #00FFD1;
+}
+
+.btn-secondary {
+    background: #111;
+    border: 2px solid #7B3FE4;
+}
+
+/* === Hero === */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    position: relative;
+    overflow: hidden;
+    padding-top: 40px;
+}
+
+.hero .logo img {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+.hero .slogan {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-top: 10px;
+}
+
+.hero .seti img {
+    max-width: 300px;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* === About === */
+.about {
+    padding: 60px 0;
+}
+
+.about h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 1.1rem;
+    color: #bbb;
+    margin-bottom: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === Advantages === */
+.advantages {
+    padding: 60px 0;
+    background: #10121a;
+}
+
+.advantages h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #16181f;
+    padding: 20px;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card img {
+    max-width: 60px;
+    margin-bottom: 15px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #7B3FE4, 0 0 30px #00FFD1;
+}
+
+/* === Connect === */
+.connect {
+    padding: 60px 0;
+}
+
+.wallets img {
+    max-width: 80px;
+    margin: 20px;
+}
+
+.actions .btn {
+    margin: 10px;
+}
+
+/* === Footer === */
+footer {
+    background: #0a0a0a;
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid #222;
+}
+
+.socials a img {
+    width: 30px;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+.socials a img:hover {
+    transform: scale(1.2);
+}
+
+.stats {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* === Адаптивність === */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+    }
+
+    .hero .seti img {
+        max-width: 200px;
+        margin-top: 20px;
+    }
+
+    .about p {
+        font-size: 1rem;
+    }
+
+    .wallets img {
+        max-width: 60px;
+    }
+}
 
