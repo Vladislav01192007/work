@@ -278,40 +278,32 @@
   </style>
 </head>
 <body>
+  <!-- Прелоадер -->
   <div id="preloader">
     <img src="logo.jpg" alt="Loading..." />
   </div>
 
+  <!-- Анімація після прелоадера -->
+  <div id="postloader-animation">
+    <img src="logo.jpg" alt="Welcome" />
+  </div>
+
+  <!-- Контент сайту -->
   <header>
     <img src="logo.jpg" alt="ALTSETING Logo">
     <h1>ALTSETING Token ($ALTST)</h1>
     <p id="subtitle">Мем-токен з реальним майбутнім</p>
   </header>
-  
-  <nav>
-  <a href="#about">About us</a>
-  <a href="#nfts">NFT</a>
-  <a href="#" onclick="openWhitelist()">📝 Whitelist</a>
-</nav>
 
-  <div class="lang-switcher">
-    <button onclick="setLang('uk')">Українська</button>
-    <button onclick="setLang('en')">English</button>
-    <button onclick="setLang('pl')">Polski</button>
-    <button onclick="setLang('ru')">Русский</button>
-  </div>
-  
-<section id="wallet" style="padding: 40px; text-align: center;">
-  <h2>🎒 ALTSETING Wallet</h2>
-  <button onclick="createWallet()"</button>
-  <div id="walletInfo" style="margin-top: 20px; display:none;">
-  <p><strong>Ваша адреса:</strong></p>
-  <p id="walletAddress" style="word-break: break-all;"></p>
-  <button onclick="copyAddress()" class="wallet-button">📋 Copy address</button>
-</div>
-
-<button class="wallet-button" onclick="createWallet()">🚀 Create wallet</button>
-</section>
+  <!-- MetaMask-подібна секція -->
+  <section class="metamask-style">
+    <div class="metamask-header">
+      🦊 ALTSETING Wallet Connection
+    </div>
+    <p style="text-align: center;">Connect your wallet to interact with ALTSETING ecosystem</p>
+    <button class="metamask-button" onclick="connectWallet()">Connect Wallet</button>
+    <button class="metamask-button" style="background: linear-gradient(to right, #00ffcc, #0099ff);" onclick="createWallet()">Create New Wallet</button>
+  </section>
   
   <section>
     <h2 id="about-title">Про ALTSETING</h2>
@@ -360,6 +352,56 @@
   </footer>
   
 <script>
+  // Обробник завантаження сторінки
+    window.addEventListener("load", () => {
+      // Ховаємо прелоадер
+      document.getElementById("preloader").style.display = "none";
+      
+      // Показуємо анімацію після завантаження
+      const postloader = document.getElementById("postloader-animation");
+      postloader.style.opacity = "1";
+      
+      // Через 2 секунди ховаємо анімацію
+      setTimeout(() => {
+        postloader.style.transition = "opacity 1s ease";
+        postloader.style.opacity = "0";
+        
+        // Після завершення анімації приховуємо її повністю
+        setTimeout(() => {
+          postloader.style.display = "none";
+        }, 1000);
+      }, 2000);
+    });
+
+    // Функція для імітації підключення гаманця
+    function connectWallet() {
+      const walletSection = document.querySelector('.metamask-style');
+      walletSection.innerHTML = `
+        <div class="metamask-header">
+          ✅ Wallet Connected
+        </div>
+        <div style="text-align: center; margin: 20px 0;">
+          <img src="logo.jpg" style="width: 80px; border-radius: 50%; margin-bottom: 15px;">
+          <p>ALTSETING Wallet</p>
+          <p style="font-size: 12px; word-break: break-all; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 5px;">
+            0x1a2b3c...4d5e6f
+          </p>
+        </div>
+        <button class="metamask-button" onclick="disconnectWallet()">Disconnect</button>
+      `;
+    }
+
+    function disconnectWallet() {
+      const walletSection = document.querySelector('.metamask-style');
+      walletSection.innerHTML = `
+        <div class="metamask-header">
+          🦊 ALTSETING Wallet Connection
+        </div>
+        <p style="text-align: center;">Connect your wallet to interact with ALTSETING ecosystem</p>
+        <button class="metamask-button" onclick="connectWallet()">Connect Wallet</button>
+        <button class="metamask-button" style="background: linear-gradient(to right, #00ffcc, #0099ff);" onclick="createWallet()">Create New Wallet</button>
+      `;
+    }
 function openWhitelist() {
   const whitelistContent = {
     en: {
