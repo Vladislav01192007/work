@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ALTSETING Token</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="logo-container">
-    <img src="logo.jpg" alt="ALTSETING Token" class="logo">
-  </div>
+  <!-- Селектор вибору фону -->
+  <select class="theme-selector" id="themeSelect">
+    <option value="grayblack">Сірий → Чорний</option>
+    <option value="bluepurple">Синій → Фіолетовий</option>
+    <option value="greenblack">Зелений → Чорний</option>
+    <option value="sunset">Помаранчевий → Червоний</option>
+  </select>
+
+  <!-- Лого -->
+  <img src="logo.jpg" alt="ALTSETING Token" class="logo">
+
+  <script src="script.js"></script>
 </body>
 </html>
