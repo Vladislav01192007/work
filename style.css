@@ -8,31 +8,22 @@ html, body {
   align-items: center;
 }
 
-.logo-container {
-  animation: fadeZoom 2s ease-out forwards;
-}
-
 .logo {
-  width: 200px;
-  height: auto;
-  filter: drop-shadow(0 0 20px rgba(0, 240, 176, 0.8));
+  width: 80vmin; /* займає більшу частину екрану */
+  height: 80vmin;
+  object-fit: cover;
+  border-radius: 50%; /* робить круглим */
+  animation: pulse 4s ease-in-out infinite;
+  box-shadow: 0 0 40px rgba(255, 140, 0, 0.8);
 }
 
-/* Анімація появи */
-@keyframes fadeZoom {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-    filter: blur(10px);
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 40px rgba(255, 140, 0, 0.8);
   }
   50% {
-    opacity: 1;
     transform: scale(1.05);
-    filter: blur(0);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
+    box-shadow: 0 0 60px rgba(255, 180, 0, 1);
   }
 }
-
