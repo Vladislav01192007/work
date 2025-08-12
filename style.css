@@ -2,17 +2,32 @@ html, body {
   margin: 0;
   padding: 0;
   height: 300%;
-  background: #0b1020;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background 1s ease;
+  background: linear-gradient(135deg, #2e2e2e, #0b0b0b);
+}
+
+/* Селектор тем */
+.theme-selector {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .logo {
-  width: 80vmin; /* займає більшу частину екрану */
+  width: 80vmin;
   height: 80vmin;
   object-fit: cover;
-  border-radius: 50%; /* робить круглим */
+  border-radius: 50%;
   animation: pulse 4s ease-in-out infinite;
   box-shadow: 0 0 40px rgba(255, 140, 0, 0.8);
 }
@@ -24,6 +39,8 @@ html, body {
   }
   50% {
     transform: scale(1.05);
-    box-shadow: 0 0 60px rgba(255, 180, 0, 1);
+    box-shadow: 0 0 80px rgba(255, 180, 0, 1);
   }
+}
+
 }
