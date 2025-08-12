@@ -1,78 +1,38 @@
-:root{
-  --bg1: #0b1020;
-  --accent: #00f0b0;
-  --muted: #9aa1b3;
-  --card: rgba(255,255,255,0.03);
-  --glass: rgba(255,255,255,0.04);
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #0b1020;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:Inter,system-ui,Arial,sans-serif;
-  background: linear-gradient(90deg,var(--bg1) 0%, #1b1536 100%);
-  color:#eafaf6;
-  -webkit-font-smoothing:antialiased;
+.logo-container {
+  animation: fadeZoom 2s ease-out forwards;
 }
 
-.container{max-width:1100px;margin:0 auto;padding:24px}
-
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{width:60px;height:60px;object-fit:cover;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,0.6)}
-.brand h1{margin:0;font-size:20px;letter-spacing:0.6px}
-.brand .muted{color:var(--accent);font-weight:800;margin-left:6px}
-
-.main-nav{display:flex;align-items:center;gap:14px}
-.main-nav a{color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:8px;transition:all .18s}
-.main-nav a:hover{color:var(--accent);transform:translateY(-2px)}
-.btn{border:0;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600}
-.btn.small{padding:6px 10px;font-size:14px}
-.btn.primary{background:linear-gradient(135deg,var(--accent),#00b3ff);color:#001216;box-shadow:0 8px 30px rgba(0,240,176,0.12)}
-.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent)}
-
-.hero{padding:60px 0}
-.hero-grid{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
-.hero-left h2{font-size:36px;margin:0 0 12px;color:#fff}
-.hero-left p{color:var(--muted);font-size:16px;max-width:520px}
-.hero-cta{margin-top:18px;display:flex;gap:12px;align-items:center}
-.quick-features{list-style:none;padding:0;margin:18px 0 0;color:var(--muted);display:flex;gap:12px}
-.quick-features li{background:var(--card);padding:8px 12px;border-radius:10px}
-
-.ani-card{
-  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius:18px;padding:18px;backdrop-filter:blur(6px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-  display:flex;gap:14px;align-items:center;transition:transform .35s ease, box-shadow .35s ease;
-  cursor:pointer;
+.logo {
+  width: 200px;
+  height: auto;
+  filter: drop-shadow(0 0 20px rgba(0, 240, 176, 0.8));
 }
-.ani-card:focus, .ani-card:hover{
-  transform:translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 60px rgba(0,176,255,0.12);
+
+/* Анімація появи */
+@keyframes fadeZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+    filter: blur(10px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
-.ani-img{width:120px;height:120px;border-radius:12px;object-fit:cover;flex-shrink:0}
-.ani-info h3{margin:0 0 6px}
-.ani-info p{margin:0;color:var(--muted);font-size:14px}
 
-.section{margin:32px auto;padding:28px;border-radius:14px;background:var(--glass);box-shadow:0 8px 30px rgba(0,0,0,0.5)}
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.feature{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px}
-
-.nft-grid{display:flex;gap:16px;flex-wrap:wrap}
-.nft-card{width:200px;background:var(--card);padding:12px;border-radius:12px;text-align:center}
-.nft-card img{width:100%;height:160px;object-fit:cover;border-radius:8px}
-
-.callout{display:flex;justify-content:space-between;align-items:center;gap:20px}
-.callout p{margin:0;color:var(--muted)}
-
-.site-footer{padding:18px 0;background:transparent;text-align:center;color:var(--muted)}
-#year{color:var(--muted)}
-
-/* Responsive */
-@media (max-width:960px){
-  .hero-grid{grid-template-columns:1fr; padding-bottom: 12px}
-  .main-nav{display:none}
-  .features-grid{grid-template-columns:1fr}
-  .callout{flex-direction:column;align-items:flex-start}
-}
