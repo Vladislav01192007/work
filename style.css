@@ -1,28 +1,38 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 300%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background 1s ease;
   background: linear-gradient(135deg, #2e2e2e, #0b0b0b);
+  transition: background 1s ease;
+  font-family: Arial, sans-serif;
 }
 
-/* Селектор тем */
-.theme-selector {
+/* Контейнер для селектора */
+.theme-container {
   position: fixed;
   top: 20px;
   right: 20px;
-  padding: 8px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 6px 10px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Сам селектор */
+.theme-container select {
+  background: transparent;
   border: none;
+  color: white;
   font-size: 14px;
+  outline: none;
   cursor: pointer;
 }
 
+/* Лого */
 .logo {
   width: 80vmin;
   height: 80vmin;
@@ -41,6 +51,4 @@ html, body {
     transform: scale(1.05);
     box-shadow: 0 0 80px rgba(255, 180, 0, 1);
   }
-}
-
 }
