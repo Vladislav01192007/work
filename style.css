@@ -12,10 +12,10 @@ body {
   min-height: 100%;
   background: linear-gradient(
     var(--angle), 
-    var(--g1) 0%, 
-    color-mix(in srgb, var(--g1) 100%, var(--g2) 100%) 100%,
-    color-mix(in srgb, var(--g1) 100%, var(--g2) 100%) 100%,
-    var(--g2) 100%
+    var(--g1), 
+    #1e1e1e,  /* проміжний колір 1 */
+    #121212,  /* проміжний колір 2 */
+    var(--g2)
   );
   transition: background 600ms ease;
   color: #e6e6e6;
