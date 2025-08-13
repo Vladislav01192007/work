@@ -1,21 +1,44 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ALTSETING Token</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Селектор вибору теми -->
-  <div class="theme-container">
-    <select id="themeSelect">
-      <option value="grayblack">М’який сірий → Чорний</option>
-    </select>
+  <!-- Хай-тек перемикач у правому верхньому куті -->
+  <div class="ui-topbar">
+    <button id="bgToggle" class="neo-toggle" aria-label="Перемкнути напрям фону">
+      <span class="dot"></span>
+      <span class="label">GRAY ⇄ BLACK</span>
+    </button>
   </div>
 
-  <!-- Лого -->
-  <img src="logo.jpg" alt="ALTSETING Token" class="logo">
+  <!-- Хедер з логотипом, що зменшується під час скролу -->
+  <header class="hero" id="hero">
+    <img src="logo.jpg" alt="ALTSETING Token" id="heroLogo" class="logo" />
+  </header>
+
+  <!-- Вміст для демонстрації скролу -->
+  <main class="content">
+    <section>
+      <h2>ALTSETING</h2>
+      <p>Тут буде контент сайту. Прокрути вниз — лого плавно зменшується до компактного розміру.</p>
+    </section>
+    <section>
+      <h3>Розділ 1</h3>
+      <p>Додай сюди свій текст, картинки або блоки.</p>
+    </section>
+    <section>
+      <h3>Розділ 2</h3>
+      <p>Ще трохи контенту, щоб перевірити поведінку на довгій сторінці.</p>
+    </section>
+    <section>
+      <h3>Розділ 3</h3>
+      <p>Фінальний блок-заглушка.</p>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
