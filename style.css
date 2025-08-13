@@ -27,6 +27,25 @@ body {
   overflow-x: hidden; /* Запобігає горизонтальному скролу */
 }
 
+/* SETI з обох боків */
+.seti {
+  position: absolute;
+  top: 50%;
+  width: clamp(100px, 20vmin, 240px);
+  transform: translateY(-50%);
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+.seti-left { left: 5%; animation-delay: 0s; }
+.seti-right { right: 5%; animation-delay: 3s; }
+
+/* Анімація плавного "плавання" */
+@keyframes float {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-52%) translateX(10px); }
+}
+
 /* Віньєтка у тій же гамі */
 body::before{
   content:"";
