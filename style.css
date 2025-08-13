@@ -13,8 +13,8 @@ body {
   background: linear-gradient(
     var(--angle), 
     var(--g1) 0%, 
-    color-mix(in srgb, var(--g1) 70%, var(--g2) 30%) 30%,
-    color-mix(in srgb, var(--g1) 30%, var(--g2) 70%) 70%,
+    color-mix(in srgb, var(--g1) 100%, var(--g2) 100%) 100%,
+    color-mix(in srgb, var(--g1) 100%, var(--g2) 100%) 100%,
     var(--g2) 100%
   );
   transition: background 600ms ease;
