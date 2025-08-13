@@ -1,55 +1,122 @@
+/* ===== БАЗА: фон на весь екран (2 кольори) ===== */
+:root{
+  --g1: #2f2f2f;  /* м’який сірий */
+  --g2: #0b0b0b;  /* чорний */
+  --angle: 135deg; /* напрям градієнта (перемикається скриптом) */
+}
+
+* { box-sizing: border-box; }
+
 html, body {
-  margin: 0;
-  padding: 0;
   height: 100%;
-  width: 100%;
-  background: linear-gradient(135deg, #2e2e2e, #0b0b0b);
-  transition: background 1s ease;
-  font-family: Arial, sans-serif;
+  margin: 0;
 }
 
-/* Контейнер для лого по центру */
-.logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80vmin;
-  height: 80vmin;
-  object-fit: cover;
-  border-radius: 50%;
-  animation: pulse 4s ease-in-out infinite;
-  box-shadow: 0 0 40px rgba(255, 140, 0, 0.8);
+body {
+  min-height: 100%;
+  background: linear-gradient(var(--angle), var(--g1), var(--g2));
+  transition: background 600ms ease;
+  color: #e6e6e6;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
+/* Легка «віньєтка» (та ж гама, без нових кольорів) */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(255,255,255,0.03), transparent 60%),
+    radial-gradient(1200px 600px at 50% 110%, rgba(0,0,0,0.25), transparent 65%);
+}
 
-/* Сам селектор */
-.theme-container select {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 14px;
-  outline: none;
+/* ===== Хай-тек перемикач у правому верхньому куті ===== */
+.ui-topbar{
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 20;
+}
+
+.neo-toggle{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px 10px 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.06);
+  color: #f0f0f0;
+  border-radius: 14px;
   cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 8px 24px rgba(0,0,0,0.35);
+  transition: transform .2s ease, box-shadow .3s ease, background .3s ease;
+}
+.neo-toggle:hover{ transform: translateY(-2px); }
+.neo-toggle:active{ transform: translateY(0); }
+
+.neo-toggle .dot{
+  width: 12px; height: 12px; border-radius: 50%;
+  background: linear-gradient(180deg, #cfcfcf, #5a5a5a);
+  box-shadow:
+    0 0 8px rgba(255,255,255,0.25),
+    inset 0 0 4px rgba(0,0,0,0.6);
+}
+.neo-toggle .label{
+  font-weight: 600;
+  letter-spacing: .5px;
+  font-size: 12px;
+  color: #ededed;
 }
 
-/* Лого */
-.logo {
-  width: 80vmin;
-  height: 80vmin;
+/* ===== Хедер з логотипом, що зменшується ===== */
+.hero{
+  position: relative;
+  height: min(86vh, 900px); /* великий на старті */
+  display: grid;
+  place-items: center;
+  padding-top: 48px; /* щоб не перекривалась кнопкою */
+}
+
+.logo{
+  width: clamp(140px, 60vmin, 520px);
+  aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 50%;
-  animation: pulse 4s ease-in-out infinite;
-  box-shadow: 0 0 40px rgba(255, 140, 0, 0.8);
+  box-shadow: 0 0 40px rgba(255,255,255,0.05),
+              0 0 120px rgba(0,0,0,0.45);
+  will-change: transform, filter;
+  transition: filter 300ms ease;
+}
+.logo.scrolled{
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
 }
 
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 40px rgba(255, 140, 0, 0.8);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 80px rgba(255, 180, 0, 1);
-  }
+/* ===== Контент нижче для скролу ===== */
+.content{
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+}
+
+section{ 
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 22px 18px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+  margin-bottom: 18px;
+}
+
+h2,h3{ margin: 0 0 10px; color: #f2f2f2; }
+p { margin: 0; color: #d2d2d2; }
+
+/* Адаптив */
+@media (max-width: 640px){
+  .neo-toggle .label{ display:none; }
+  .neo-toggle{ padding: 10px; }
 }
