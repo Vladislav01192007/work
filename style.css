@@ -1,26 +1,27 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 300%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
+  width: 100%;
   background: linear-gradient(135deg, #2e2e2e, #0b0b0b);
   transition: background 1s ease;
   font-family: Arial, sans-serif;
 }
 
-/* Контейнер для селектора */
-.theme-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 6px 10px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+/* Контейнер для лого по центру */
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vmin;
+  height: 80vmin;
+  object-fit: cover;
+  border-radius: 50%;
+  animation: pulse 4s ease-in-out infinite;
+  box-shadow: 0 0 40px rgba(255, 140, 0, 0.8);
 }
+
 
 /* Сам селектор */
 .theme-container select {
