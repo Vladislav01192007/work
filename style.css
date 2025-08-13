@@ -8,9 +8,15 @@
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; }
 
-body{
+body {
   min-height: 100%;
-  background: linear-gradient(var(--angle), var(--g1), var(--g2));
+  background: linear-gradient(
+    var(--angle), 
+    var(--g1) 0%, 
+    color-mix(in srgb, var(--g1) 70%, var(--g2) 30%) 30%,
+    color-mix(in srgb, var(--g1) 30%, var(--g2) 70%) 70%,
+    var(--g2) 100%
+  );
   transition: background 600ms ease;
   color: #e6e6e6;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
