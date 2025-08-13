@@ -9,17 +9,22 @@
 html, body { height: 100%; margin: 0; }
 
 body {
-  min-height: 100%;
-  background: linear-gradient(
-    var(--angle), 
-    var(--g1), 
-    #1e1e1e,  /* проміжний колір 1 */
-    #121212,  /* проміжний колір 2 */
-    var(--g2)
-  );
+  min-height: 100vh; /* Змінив на vh для більш надійного покриття */
+  background: 
+    linear-gradient(
+      var(--angle), 
+      var(--g1) 0%, 
+      color-mix(in srgb, var(--g1) 75%, var(--g2) 25%) 35%,
+      color-mix(in srgb, var(--g1) 25%, var(--g2) 75%) 65%,
+      var(--g2) 100%
+    ) fixed; /* Додав fixed для усунення артефактів при скролі */
+  background-attachment: fixed; /* Фіксує градієнт на місці */
+  background-size: cover; /* Забезпечує повне покриття */
   transition: background 600ms ease;
   color: #e6e6e6;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  margin: 0;
+  overflow-x: hidden; /* Запобігає горизонтальному скролу */
 }
 
 /* Віньєтка у тій же гамі */
