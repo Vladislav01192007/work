@@ -1,54 +1,31 @@
-/* ===== БАЗА: фон на весь сайт (2 кольори) ===== */
-:root{
-  --g1: #2f2f2f;   /* м’який сірий */
-  --g2: #0b0b0b;   /* чорний */
-  --angle: 135deg; /* напрям градієнта (перемикається скриптом) */
+:root {
+  --g1: #2f2f2f;
+  --g2: #0b0b0b;
+  --angle: 135deg;
 }
 
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; }
-
 body {
-  min-height: 100vh; /* Змінив на vh для більш надійного покриття */
-  background: 
+  min-height: 100vh;
+  background:
     linear-gradient(
-      var(--angle), 
-      var(--g1) 0%, 
+      var(--angle),
+      var(--g1) 0%,
       color-mix(in srgb, var(--g1) 75%, var(--g2) 25%) 35%,
       color-mix(in srgb, var(--g1) 25%, var(--g2) 75%) 65%,
       var(--g2) 100%
-    ) fixed; /* Додав fixed для усунення артефактів при скролі */
-  background-attachment: fixed; /* Фіксує градієнт на місці */
-  background-size: cover; /* Забезпечує повне покриття */
+    ) fixed;
+  background-attachment: fixed;
+  background-size: cover;
   transition: background 600ms ease;
   color: #e6e6e6;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  margin: 0;
-  overflow-x: hidden; /* Запобігає горизонтальному скролу */
+  overflow-x: hidden;
 }
 
-/* SETI з обох боків */
-.seti {
-  position: absolute;
-  top: 50%;
-  width: clamp(100px, 20vmin, 240px);
-  transform: translateY(-50%);
-  animation: float 6s ease-in-out infinite;
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
-}
-
-.seti-left { left: 5%; animation-delay: 0s; }
-.seti-right { right: 5%; animation-delay: 3s; }
-
-/* Анімація плавного "плавання" */
-@keyframes float {
-  0%, 100% { transform: translateY(-50%) translateX(0); }
-  50% { transform: translateY(-52%) translateX(10px); }
-}
-
-/* Віньєтка у тій же гамі */
-body::before{
-  content:"";
+body::before {
+  content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -57,67 +34,99 @@ body::before{
     radial-gradient(1200px 600px at 50% 110%, rgba(0,0,0,0.25), transparent 65%);
 }
 
-/* ===== Хай-тек перемикач ===== */
-.ui-topbar{
+/* Топбар перемикача */
+.ui-topbar {
   position: fixed;
   top: 16px;
   right: 16px;
   z-index: 20;
 }
-
-.neo-toggle{
-  display: inline-flex; align-items: center; gap: 10px;
+.neo-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   padding: 10px 14px 10px 12px;
   border: 1px solid rgba(255,255,255,0.08);
   background: rgba(255,255,255,0.06);
   color: #f0f0f0;
-  border-radius: 14px; cursor: pointer;
+  border-radius: 14px;
+  cursor: pointer;
   backdrop-filter: blur(8px);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08),
-              0 8px 24px rgba(0,0,0,0.35);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 24px rgba(0,0,0,0.35);
   transition: transform .2s ease, box-shadow .3s ease, background .3s ease;
 }
-.neo-toggle:hover{ transform: translateY(-2px); }
-.neo-toggle .dot{
+.neo-toggle:hover { transform: translateY(-2px); }
+.neo-toggle .dot {
   width: 12px; height: 12px; border-radius: 50%;
   background: linear-gradient(180deg, #cfcfcf, #5a5a5a);
-  box-shadow: 0 0 8px rgba(255,255,255,0.25),
-              inset 0 0 4px rgba(0,0,0,0.6);
+  box-shadow: 0 0 8px rgba(255,255,255,0.25), inset 0 0 4px rgba(0,0,0,0.6);
 }
-.neo-toggle .label{ font-weight: 600; letter-spacing: .5px; font-size: 12px; color: #ededed; }
+.neo-toggle .label {
+  font-weight: 600; letter-spacing: .5px; font-size: 12px; color: #ededed;
+}
 
-/* ===== Хедер з логотипом, що зменшується ===== */
-.hero{
+/* Хедер / герой */
+.hero {
   position: relative;
-  height: min(86vh, 900px); /* великий на старті */
+  height: min(86vh, 900px);
   display: grid; place-items: center;
-  padding-top: 48px; /* щоб кнопку не перекривав */
+  padding-top: 48px;
 }
-
-.logo{
+.logo {
   width: clamp(140px, 60vmin, 520px);
-  aspect-ratio: 1/1; object-fit: cover; border-radius: 50%;
-  box-shadow: 0 0 40px rgba(255,255,255,0.05),
-              0 0 120px rgba(0,0,0,0.45);
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow:
+    0 0 40px rgba(255,255,255,0.05),
+    0 0 120px rgba(0,0,0,0.45);
   will-change: transform, filter;
   transition: filter 300ms ease;
 }
-.logo.scrolled{ filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5)); }
+.logo.scrolled { filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5)); }
 
-/* ===== Контент ===== */
-.content{ max-width: 920px; margin: 0 auto; padding: 24px 20px 80px; }
-section{
+/* SETI персонажі */
+.seti {
+  position: absolute;
+  top: 50%;
+  width: clamp(100px, 20vmin, 240px);
+  transform: translateY(-50%);
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+.seti-left { left: 5%; animation-delay: 0s; }
+.seti-right { right: 5%; animation-delay: 3s; }
+
+@keyframes float {
+  0%,100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-52%) translateX(10px); }
+}
+
+/* Контент */
+.content {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+}
+section {
+  opacity: 0;
+  transform: translateY(30px);
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 14px;
   padding: 22px 18px;
   box-shadow: 0 8px 28px rgba(0,0,0,0.35);
   margin-bottom: 18px;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
-h2,h3{ margin: 0 0 10px; color: #f2f2f2; }
-p{ margin: 0; color: #d2d2d2; }
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+h2, h3 { margin: 0 0 10px; color: #f2f2f2; }
+p { margin: 0; color: #d2d2d2; }
 
-@media (max-width: 640px){
-  .neo-toggle .label{ display: none; }
-  .neo-toggle{ padding: 10px; }
+@media (max-width: 640px) {
+  .neo-toggle .label { display: none; }
+  .neo-toggle { padding: 10px; }
 }
