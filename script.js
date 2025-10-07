@@ -40,16 +40,19 @@ bgToggle.addEventListener('click', () => {
 window.addEventListener('DOMContentLoaded', () => {
   onScroll();
 }); 
- // === PRELOADER ===
+// === PRELOADER ===
 window.addEventListener("load", () => {
   const preloader = document.getElementById("preloader");
   const mainContent = document.getElementById("main-content");
 
   setTimeout(() => {
     preloader.classList.add("fade-out");
-    mainContent.style.opacity = "1";
-    mainContent.style.visibility = "visible";
-  }, 1000); // затримка 1 секунда для плавності
+    setTimeout(() => {
+      mainContent.style.opacity = "1";
+      mainContent.style.visibility = "visible";
+    }, 800);
+  }, 1000); // 1 секунда перед зникненням
 });
+
 
 
