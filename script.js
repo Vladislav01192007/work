@@ -39,4 +39,18 @@ bgToggle.addEventListener('click', () => {
 // Одразу позначити видимими ті секції, що вже на екрані
 window.addEventListener('DOMContentLoaded', () => {
   onScroll();
+}); 
+ // === PRELOADER ===
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+  const mainContent = document.getElementById("main-content");
+
+  setTimeout(() => {
+    preloader.classList.add("fade-out");
+    setTimeout(() => {
+      mainContent.style.opacity = "1";
+      mainContent.style.visibility = "visible";
+    }, 800);
+  }, 1000); // 1 секунда перед зникненням
 });
+
