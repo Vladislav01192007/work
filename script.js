@@ -47,10 +47,9 @@ window.addEventListener("load", () => {
 
   setTimeout(() => {
     preloader.classList.add("fade-out");
-    setTimeout(() => {
-      mainContent.style.opacity = "1";
-      mainContent.style.visibility = "visible";
-    }, 800);
-  }, 1000); // 1 секунда перед зникненням
+    mainContent.style.opacity = "1";
+    mainContent.style.visibility = "visible";
+  }, 1000); // затримка 1 секунда для плавності
 });
+
 
