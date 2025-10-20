@@ -54,5 +54,18 @@ window.addEventListener("load", () => {
   }, 1000); // 1 секунда перед зникненням
 });
 
+const sidePanel = document.getElementById('sidePanel');
+const openPanel = document.getElementById('openPanel');
+const closePanel = document.getElementById('closePanel');
+
+openPanel.addEventListener('click', () => {
+  sidePanel.classList.add('active');
+});
+
+closePanel.addEventListener('click', () => {
+  sidePanel.classList.remove('active');
+});
+
+
 
 
