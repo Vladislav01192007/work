@@ -66,6 +66,37 @@ closePanel.addEventListener('click', () => {
   sidePanel.classList.remove('active');
 });
 
+// ALTSETING login
+function handleCredentialResponse(response) {
+  const data = jwt_decode(response.credential);
+  console.log("Google user:", data);
+
+  const userName = data.name;
+  const userEmail = data.email;
+  const userPicture = data.picture;
+
+  // Збережемо користувача у localStorage
+  localStorage.setItem("alt_user", JSON.stringify({
+    name: userName,
+    email: userEmail,
+    picture: userPicture
+  }));
+
+  // Показуємо профіль після входу
+  showUserProfile(userName, userPicture);
+}
+
+// Відобразимо аватар і ім'я після входу
+function showUserProfile(name, pic) {
+  const container = document.createElement('div');
+  container.className = 'user-profile';
+  container.innerHTML = `
+    <img src="${pic}" alt="${name}" class="user-avatar">
+    <span class="user-name">${name}</span>
+  `;
+  document.body.prepend(container);
+}
+
 
 
 
